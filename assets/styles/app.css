@@ -3,10 +3,42 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Patrick+Hand&display=swap');
+
+
+
+html body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+body{
+    background-image: url("../images/sprite.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* This makes the background stay in place while scrolling */
+    background-position: center;
+}
+
 
 .font-patrick-hand {
     font-family: 'Patrick Hand', cursive;
 }
+
+.patrick-hand-regular {
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.eb-garamond-regular {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+              }
+
+
 
 /* Triangle Shape for the Right Side */
 .clip-triangle {

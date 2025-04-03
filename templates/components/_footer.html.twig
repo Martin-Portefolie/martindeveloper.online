@@ -1,60 +1,51 @@
 <turbo-frame id="footer">
-    <!-- Footer -->
-    <footer id="Contact" class="bg-yellow-500 text-white py-12 px-6 font-patrick-hand">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left items-center">
+    <footer class="font-patrick-hand">
+        <!-- Top Section -->
+        <div class="bg-yellow-500 text-white py-12 px-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-            <!-- Contact Section (Left) -->
-            <div class="space-y-4">
-                <h2 class="text-2xl font-semibold">Kontakt</h2>
-                <p class="text-lg">Martin Kristiansen</p>
-                <p class="text-sm">Horsens, Danmark</p>
-                <p class="text-sm">
-                    Email: <a href="#" class="underline hover:text-gray-300 transition">martin@portefolje.com</a>
-                </p>
-                <p class="text-sm">Telefon: <span class="font-semibold">+45 36 20 25 27</span></p>
+                <!-- Kontakt (Left) -->
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-semibold">Kontakt</h2>
+                    <p class="text-lg">Martin Kristiansen</p>
+                    <p class="text-sm">Horsens, Danmark</p>
+                    <p class="text-sm">
+                        Email: <a href="#" class="underline hover:text-gray-300 transition">martin@portefolje.com</a>
+                    </p>
+                    <p class="text-sm">Telefon: <span class="font-semibold">+45 36 20 25 27</span></p>
 
-                <!-- Social Media Links -->
-                <div class="flex justify-center md:justify-start space-x-6">
-                    <a href="https://linkedin.com/in/martinhansen" target="_blank" class="hover:scale-110 transition-transform duration-300">
-                        <img src="{{ asset('images/social/linkedin.svg') }}" alt="LinkedIn" class="w-8 h-8">
-                    </a>
-                    <a href="https://github.com/martinhansen" target="_blank" class="hover:scale-110 transition-transform duration-300">
-                        <img src="{{ asset('images/social/github.svg') }}" alt="GitHub" class="w-8 h-8">
-                    </a>
+                    <!-- Social Media -->
+                    <div class="flex space-x-4 pt-2">
+                        <a href="https://www.linkedin.com/in/martin-kristiansen-7a4b88177/" target="_blank" class="hover:scale-110 transition-transform duration-300">
+                            <img src="{{ asset('images/social/linkedin.svg') }}" alt="LinkedIn" class="w-8 h-8">
+                        </a>
+                        <a href="https://github.com/Martin-Portefolie" target="_blank" class="hover:scale-110 transition-transform duration-300">
+                            <img src="{{ asset('images/social/github.svg') }}" alt="GitHub" class="w-8 h-8">
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Copyright Section (Center) -->
-            <div class="text-sm text-white border-t border-white/20 pt-4 md:border-none md:pt-0">
+                <!-- Denne side er bygget med (Left-Aligned) -->
+                <div class="flex flex-col items-start space-y-6">
+                    <h2 class="text-2xl font-semibold">Denne side er bygget med:</h2>
+                    <div class="flex flex-wrap justify-start gap-6">
+                        {% for tech in ['symfony', 'twig', 'stimulus', 'turbo', 'tailwind'] %}
+                            <div class="flex flex-col items-center">
+                                <img src="{{ asset('images/tech/' ~ tech ~ '.svg') }}" alt="{{ tech|capitalize }}" class="w-14 h-14 hover:scale-110 transition-transform duration-300">
+                                <span class="text-sm mt-2">{{ tech|capitalize }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="bg-yellow-600 text-white py-4 px-6">
+            <div class="max-w-6xl mx-auto text-center text-sm">
                 <p>© {{ "now"|date("Y") }} Martin Kristiansens Portefølje</p>
                 <p>Alle rettigheder forbeholdes.</p>
-            </div>
-
-            <!-- Built With Section (Right) -->
-            <div class="text-center md:text-right">
-                <h2 class="text-xl font-semibold mb-2">Bygget med:</h2>
-                <div class="flex justify-center md:justify-end items-center space-x-4">
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('images/tech/symfony.svg') }}" alt="Symfony" class="w-10 h-10 hover:scale-110 transition-transform duration-300">
-                        <span class="text-sm mt-1">Symfony</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('images/tech/twig.svg') }}" alt="Twig" class="w-10 h-10 hover:scale-110 transition-transform duration-300">
-                        <span class="text-sm mt-1">Twig</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('images/tech/stimulus.svg') }}" alt="Stimulus" class="w-10 h-10 hover:scale-110 transition-transform duration-300">
-                        <span class="text-sm mt-1">Stimulus</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('images/tech/turbo.svg') }}" alt="Turbo" class="w-10 h-10 hover:scale-110 transition-transform duration-300">
-                        <span class="text-sm mt-1">Turbo</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('images/tech/tailwind.svg') }}" alt="Tailwind CSS" class="w-10 h-10 hover:scale-110 transition-transform duration-300">
-                        <span class="text-sm mt-1">Tailwind</span>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>
