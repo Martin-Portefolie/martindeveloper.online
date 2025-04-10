@@ -13,7 +13,26 @@
             {% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body
+            data-controller="background-grid"
+            data-background-grid-icons-value='[
+    "/icons/pen.svg",
+    "/icons/html.svg",
+    "/icons/docker.svg",
+    "/icons/javascript.svg",
+    "/icons/bulp.svg",
+    "/icons/wordpress.svg",
+    "/icons/mouse.svg",
+    "/icons/php.svg",
+    "/icons/symfony.svg",
+    "/icons/laptop.svg",
+    "/icons/react.svg",
+    "/icons/github.svg",
+    "/icons/laravel.svg"
+  ]'
+            data-background-grid-size-value="50"
+            data-background-grid-rows-value="6"
+    >
         {% include 'components/_nav.html.twig' %}
         {% block body %}
         {% endblock %}
