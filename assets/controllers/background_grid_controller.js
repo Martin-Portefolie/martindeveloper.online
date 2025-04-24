@@ -61,7 +61,8 @@ export default class extends Controller {
             const raw = svg.innerHTML
 
 // Force fill on all <path> tags
-            const fixed = raw.replace(/<path\b(?![^>]*fill=)/g, '<path fill="black"') // only if no fill
+//             const fixed = raw.replace(/<path\b(?![^>]*fill=)/g, '<path fill="black"') // only if no fill
+            const fixed = raw
 
             return fixed
         } catch (error) {
