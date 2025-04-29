@@ -25,3 +25,6 @@
 ###< symfony/asset-mapper ###
 
 .DS_Store
+
+### IDE ###
+.idea/
