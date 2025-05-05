@@ -69,3 +69,16 @@ body{
 .animate-slide-in {
     animation: slideIn 1s ease-out;
 }
+
+/*### about ###*/
+/* optional, custom CSS */
+.timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.4rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #facc15; /* yellow-500 */
+    border-radius: 9999px;
+}
