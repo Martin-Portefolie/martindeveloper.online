@@ -1,68 +1,57 @@
-<section id="about" class="py-24 mt-40 mb-40 bg-white text-yellow-800 eb-garamond-regular px-6">
-    <div class="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
-        <h2 class="text-4xl font-semibold text-left mb-6">Services</h2>
-        <p>Her er nogle services</p>
 
-        <div class="w-full grid gap-8">
-            <!-- Row 1 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1 -->
-                <div class="rounded-xl border-2 border-t-8 border-l-8 border-yellow-500 bg-white">
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-800 uppercase">Test</h3>
-                        <p class="mt-2 text-gray-600">
-                            A decentralized application (dapp) is an application built on a decentralized network that combines a smart contract and a frontend user interface.
-                        </p>
-                    </div>
-                </div>
+<section id="services" class="py-24 mt-40 mb-40 bg-white text-yellow-900 eb-garamond-regular px-6 text-base leading-relaxed">
+    <div class="max-w-6xl mx-auto space-y-12">
 
-                <!-- Card 2 -->
-                <div class="rounded-xl border-2 border-b-8 border-r-8 border-yellow-400 bg-white">
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-700 uppercase">Test</h3>
-                        <p class="mt-2 text-gray-600">
-                            A decentralized application (dapp) is an application built on a decentralized network that combines a smart contract and a frontend user interface.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <!-- Section Heading -->
+        <div class="space-y-4">
+            <div class="w-20 border-t-8 border-yellow-500"></div>
+            <h2 class="text-4xl font-bold text-yellow-600">Services</h2>
+            <h2 class="text-2xl font-semibold text-yellow-700">
+                Her er nogle af de services, hvor jeg kan hjælpe dig videre med dit projekt.
+            </h2>
+        </div>
 
-            <!-- Row 2 -->
-            <div class="grid grid-cols-1  md:grid-cols-3 gap-8">
-                <!-- Card 3 -->
-                <div class="rounded-xl border-2 border-l-8 border-yellow-600 bg-white">
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-700 uppercase">Test</h3>
-                        <p class="mt-2 text-gray-600">
-                            A decentralized application (dapp) is an application built on a decentralized network that combines a smart contract and a frontend user interface.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Card 4 -->
-                <div class="rounded-xl border-2 border-b-8 border-t-8 border-yellow-300 bg-white">
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-700 uppercase">Test</h3>
-                        <p class="mt-2 text-gray-600">
-                            A decentralized application (dapp) is an application built on a decentralized network that combines a smart contract and a frontend user interface.
-                        </p>
-                    </div>
-                </div>
+        <!-- Row 1: 2 Columns with Larger Icons -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {% set rowOne = [
+                { icon: 'mdi:architecture', title: 'Arkitektur & Rådgivning', desc: 'Overblik, struktur og tech stack-valg.' },
+                { icon: 'mdi:database-cog', title: 'Backend-udvikling', desc: 'Skalerbare systemer og integrationer.' }
+            ] %}
 
-                <!-- Card 5 -->
-                <div class="rounded-xl border-2 border-r-8 border-yellow-700 bg-white">
-                    <div class="p-4">
-                <span class="hover:border-b-2 border-yellow-300 rounded-xl">
-                    <h3 class="text-lg font-bold text-gray-700 uppercase">Test</h3>
-                </span>
-                        <p class="mt-2 text-gray-600">
-                            A decentralized application (dapp) is an application built on a decentralized network that combines a smart contract and a frontend user interface.
-                        </p>
+            {% for service in rowOne %}
+                <div class="bg-yellow-50 p-6 rounded-2xl shadow-md border border-yellow-200 hover:shadow-lg transition">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-yellow-600 text-white p-4 rounded-full w-14 h-14 flex items-center justify-center">
+                            {{ ux_icon(service.icon, { class: 'w-6 h-6' }) }}
+                        </div>
                     </div>
+                    <h3 class="text-xl font-bold text-yellow-700 mb-2 text-center">{{ service.title }}</h3>
+                    <p class="text-yellow-800 text-sm text-center">{{ service.desc }}</p>
                 </div>
-            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Row 2: 3 Columns with Smaller Icons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% set rowTwo = [
+                { icon: 'mdi:cloud-sync', title: 'Systemintegration', desc: 'Sammenknytning af systemer & API’er.' },
+                { icon: 'mdi:monitor-cellphone', title: 'Frontend', desc: 'Interaktivt UI med fokus på brugeroplevelse.' },
+                { icon: 'mdi:palette-outline', title: 'Design & UX', desc: 'Visuelle interfaces med mening.' }
+            ] %}
+
+            {% for service in rowTwo %}
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-yellow-100 hover:shadow-md transition">
+                    <div class="flex items-center justify-center mb-3">
+                        <div class="bg-yellow-500 text-white p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                            {{ ux_icon(service.icon, { class: 'w-5 h-5' }) }}
+                        </div>
+                    </div>
+                    <h3 class="text-md font-bold text-yellow-700 mb-1 text-center">{{ service.title }}</h3>
+                    <p class="text-yellow-800 text-sm text-center">{{ service.desc }}</p>
+                </div>
+            {% endfor %}
         </div>
 
     </div>
-
 </section>
