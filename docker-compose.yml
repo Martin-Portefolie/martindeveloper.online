@@ -11,13 +11,23 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portefolio.rule=Host(`martindeveloper.online`, `www.martindeveloper.online`)"
-      - "traefik.http.routers.portefolio.entrypoints=websecure"
+
+      # Primary router for non-www
+      - "traefik.http.routers.portefolio.rule=Host(`martindeveloper.online`)"
+      - "traefik.http.routers.portefolio.entrypoints=web,websecure"
       - "traefik.http.routers.portefolio.tls.certresolver=letsencrypt"
       - "traefik.http.services.portefolio.loadbalancer.server.port=80"
-      - "traefik.http.routers.portefolio.entrypoints=web,websecure"
+
+      # Additional router for www
+      - "traefik.http.routers.portefolio-www.rule=Host(`www.martindeveloper.online`)"
+      - "traefik.http.routers.portefolio-www.entrypoints=web,websecure"
+      - "traefik.http.routers.portefolio-www.tls.certresolver=letsencrypt"
+      - "traefik.http.services.portefolio-www.loadbalancer.server.port=80"
+
+      # Force redirect to HTTPS
       - "traefik.http.routers.portefolio.middlewares=https-redirect"
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+
 
   php:
     build: .
