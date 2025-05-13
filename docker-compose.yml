@@ -10,23 +10,27 @@ services:
     networks:
       - dokploy-network
     labels:
-      - "traefik.enable=true"
+      - traefik.enable=true
 
-      # Primary router for non-www
-      - "traefik.http.routers.portefolio.rule=Host(`martindeveloper.online`)"
-      - "traefik.http.routers.portefolio.entrypoints=web,websecure"
-      - "traefik.http.routers.portefolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portefolio.loadbalancer.server.port=80"
+      # Main domain
+      - traefik.http.routers.portefolio.rule=Host(`martindeveloper.online`)
+      - traefik.http.routers.portefolio.entrypoints=web,websecure
+      - traefik.http.routers.portefolio.tls.certresolver=letsencrypt
+      - traefik.http.services.portefolio.loadbalancer.server.port=80
 
-      # Additional router for www
-      - "traefik.http.routers.portefolio-www.rule=Host(`www.martindeveloper.online`)"
-      - "traefik.http.routers.portefolio-www.entrypoints=web,websecure"
-      - "traefik.http.routers.portefolio-www.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portefolio-www.loadbalancer.server.port=80"
+      # www domain
+      - traefik.http.routers.portefolio-www.rule=Host(`www.martindeveloper.online`)
+      - traefik.http.routers.portefolio-www.entrypoints=web,websecure
+      - traefik.http.routers.portefolio-www.tls.certresolver=letsencrypt
+      - traefik.http.services.portefolio-www.loadbalancer.server.port=80
 
-      # Force redirect to HTTPS
-      - "traefik.http.routers.portefolio.middlewares=https-redirect"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      # HTTPS redirect
+      - traefik.http.routers.portefolio.middlewares=https-redirect
+      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+
+      # Network
+      - traefik.docker.network=dokploy-network
+
 
 
   php:
