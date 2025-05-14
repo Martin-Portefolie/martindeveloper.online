@@ -1,0 +1,5 @@
+martindeveloper.online, www.martindeveloper.online {
+    root * /app/public
+    php_fastcgi
+    file_server
+}
