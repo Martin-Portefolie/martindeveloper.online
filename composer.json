@@ -86,11 +86,13 @@
         "post-install-cmd": [
             "@auto-scripts",
             "php bin/console tailwind:build",
+            "mkdir -p public/assets/styles",
             "cp var/tailwind/app.built.css public/assets/styles/app.css"
         ],
         "post-update-cmd": [
             "@auto-scripts",
             "php bin/console tailwind:build",
+            "mkdir -p public/assets/styles",
             "cp var/tailwind/app.built.css public/assets/styles/app.css"
         ],
         "tailwind:build": [
