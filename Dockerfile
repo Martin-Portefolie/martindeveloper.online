@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM dunglas/frankenphp
 
 RUN apt-get update && apt-get install -y \
     zlib1g-dev \
