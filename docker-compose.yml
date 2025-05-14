@@ -1,22 +1,22 @@
 services:
   martin_portefolie:
-    image: dunglas/frankenphp
+    build: .
     container_name: martin_portefolie
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/app
+      - .:/app
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
     working_dir: /app
     restart: unless-stopped
     networks:
-      - dokploy-network
-
-networks:
-  dokploy-network:
-    external: true
+      - martin-network
 
 volumes:
   caddy_data:
+
+networks:
+  martin-network:
+    external: false
