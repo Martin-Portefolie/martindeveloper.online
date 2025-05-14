@@ -78,12 +78,15 @@
     },
     "scripts": {
         "auto-scripts": {
+
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
             "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "@tailwind:build",
+            "cp var/tailwind/app.built.css public/assets/styles/app.css"
         ],
         "post-update-cmd": [
             "@auto-scripts"
