@@ -1,10 +1,28 @@
+{
+	# Optional global settings
+}
+
+frankenphp {
+	worker {
+		file /app/public/index.php
+		env APP_RUNTIME Runtime\FrankenPhpSymfony\Runtime
+	}
+}
+
 martindeveloper.online, www.martindeveloper.online {
-    root * /app/public
+	root * /app/public
+	encode zstd br gzip
 
-    php {
-        root /app/public
-    }
+	@phpRoute {
+		not path /.well-known/*
+		not file {path}
+	}
+	rewrite @phpRoute index.php
 
-    encode zstd gzip
-    file_server
+	@frontController path index.php
+	php @frontController
+
+	file_server {
+		hide *.php
+	}
 }

@@ -6,7 +6,6 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - .:/app
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
     working_dir: /app
