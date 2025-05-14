@@ -85,11 +85,16 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "@tailwind:build",
+            "php bin/console tailwind:build",
             "cp var/tailwind/app.built.css public/assets/styles/app.css"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "php bin/console tailwind:build",
+            "cp var/tailwind/app.built.css public/assets/styles/app.css"
+        ],
+        "tailwind:build": [
+            "php bin/console tailwind:build"
         ]
     },
     "conflict": {
