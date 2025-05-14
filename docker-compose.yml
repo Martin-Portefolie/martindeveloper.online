@@ -1,15 +1,24 @@
+version: '3.8'
+
 services:
-  app:
+  martin_portefolie:
     image: dunglas/frankenphp
-    container_name: projecta_frankenphp
+    container_name: martin_portefolie
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - .:/app
-      - ./Caddyfile:/etc/caddy/Caddyfile  # 👈 denne linje er vigtig!
+      - ./:/app
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
+    working_dir: /app
     restart: unless-stopped
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
 
 volumes:
   caddy_data:
