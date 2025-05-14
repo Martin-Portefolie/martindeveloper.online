@@ -6,8 +6,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/app
-      - caddy_data:/data  # Caddy's cert-data
+      - .:/app
+      - ./Caddyfile:/etc/caddy/Caddyfile  # 👈 denne linje er vigtig!
+      - caddy_data:/data
     restart: unless-stopped
 
 volumes:
