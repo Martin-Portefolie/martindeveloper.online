@@ -1,12 +1,10 @@
-{
-    auto_https off
-    http_port 80
-}
-
 martindeveloper.online, www.martindeveloper.online {
     root * /app/public
 
-    php_fastcgi unix//var/run/frankenphp.sock
-    encode gzip
+    php {
+        # Dette bruger FrankenPHP's indbyggede PHP-funktionalitet
+    }
+
+    encode zstd gzip
     file_server
 }
