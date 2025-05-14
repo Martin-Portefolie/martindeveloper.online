@@ -1,5 +1,12 @@
+{
+    auto_https off
+    http_port 80
+}
+
 martindeveloper.online, www.martindeveloper.online {
     root * /app/public
+
+    php_fastcgi unix//var/run/frankenphp.sock
+    encode gzip
     file_server
-    try_files {path} /index.php
 }
