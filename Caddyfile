@@ -1,28 +1,24 @@
 {
-	# Optional global settings
+    frankenphp
+    # Optional: only enable debug in dev
+    {$CADDY_GLOBAL_OPTIONS}
 }
 
-frankenphp {
-	worker {
-		file /app/public/index.php
-		env APP_RUNTIME Runtime\FrankenPhpSymfony\Runtime
-	}
-}
+{$SERVER_NAME} {
+    root * /app/public
+    encode zstd br gzip
+    php_server
 
-martindeveloper.online, www.martindeveloper.online {
-	root * /app/public
-	encode zstd br gzip
+    @phpRoute {
+        not path /.well-known/*
+        not file {path}
+    }
+    rewrite @phpRoute index.php
 
-	@phpRoute {
-		not path /.well-known/*
-		not file {path}
-	}
-	rewrite @phpRoute index.php
+    @frontController path index.php
+    php @frontController
 
-	@frontController path index.php
-	php @frontController
-
-	file_server {
-		hide *.php
-	}
+    file_server {
+        hide *.php
+    }
 }

@@ -1,21 +1,19 @@
 services:
   martin_portefolie:
     build: .
-    container_name: martin_portefolie
+    container_name: app
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./:/app
       - caddy_data:/data
-    working_dir: /app
-    restart: unless-stopped
-    networks:
-      - martin-network
+      - caddy_config:/config
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost}
+      APP_ENV: ${APP_ENV:-dev} # Use dev by default
+    tty: true
 
 volumes:
   caddy_data:
-
-networks:
-  martin-network:
-    external: false
+  caddy_config:
