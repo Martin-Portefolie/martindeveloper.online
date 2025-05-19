@@ -3,6 +3,21 @@ A Symfony + FrankenPHP-based portfolio site.
 
 ## Local Development Setup
 
+Go to the .env file and
+uncomment 
+```sh
+# For dev
+APP_ENV=dev
+SERVER_NAME=localhost
+CADDY_GLOBAL_OPTIONS=debug
+```
+comment this
+```sh
+# For prod (overridden in your prod deployment config)
+#APP_ENV=prod
+#SERVER_NAME=martindeveloper.online
+```
+
 ```sh
 # Build image for development
 docker build -t martin_portefolie --build-arg APP_ENV=dev .
