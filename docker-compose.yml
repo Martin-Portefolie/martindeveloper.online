@@ -1,62 +1,19 @@
 services:
-  nginx:
-    image: nginx:latest
-    container_name: portefolio_nginx
-    volumes:
-      - ./:/var/www/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - php
-    networks:
-      - dokploy-network
-    labels:
-      - traefik.enable=true
-
-      # Main domain
-      - traefik.http.routers.portefolio.rule=Host(`martindeveloper.online`)
-      - traefik.http.routers.portefolio.entrypoints=web,websecure
-      - traefik.http.routers.portefolio.tls.certresolver=letsencrypt
-      - traefik.http.services.portefolio.loadbalancer.server.port=80
-
-      # www domain
-      - traefik.http.routers.portefolio-www.rule=Host(`www.martindeveloper.online`)
-      - traefik.http.routers.portefolio-www.entrypoints=web,websecure
-      - traefik.http.routers.portefolio-www.tls.certresolver=letsencrypt
-      - traefik.http.services.portefolio-www.loadbalancer.server.port=80
-
-      # HTTPS redirect
-      - traefik.http.routers.portefolio.middlewares=https-redirect
-      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
-
-      # Network
-      - traefik.docker.network=dokploy-network
-
-
-
-  php:
+  martin_portefolie:
     build: .
-    image: php:8.3-fpm
-    container_name: portefolio_php-fpm
-    working_dir: /var/www/html
-    volumes:
-      - ./:/var/www/html
-    networks:
-      - dokploy-network
-
-  database:
-    image: mariadb:10.11.2
-    container_name: portefolio_db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_password
+    container_name: app
     ports:
-      - "3308:3306"
-    networks:
-      - dokploy-network
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/app
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost}
+      APP_ENV: ${APP_ENV:-dev} # Use dev by default
+    tty: true
 
-networks:
-  dokploy-network:
-    external: true
+volumes:
+  caddy_data:
+  caddy_config:

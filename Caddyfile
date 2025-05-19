@@ -1,0 +1,24 @@
+{
+    frankenphp
+    # Optional: only enable debug in dev
+    {$CADDY_GLOBAL_OPTIONS}
+}
+
+{$SERVER_NAME} {
+    root * /app/public
+    encode zstd br gzip
+    php_server
+
+    @phpRoute {
+        not path /.well-known/*
+        not file {path}
+    }
+    rewrite @phpRoute index.php
+
+    @frontController path index.php
+    php @frontController
+
+    file_server {
+        hide *.php
+    }
+}
