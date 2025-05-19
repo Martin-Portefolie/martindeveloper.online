@@ -8,7 +8,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'redirect_locale')]
+    public function redirectToDefaultLocale(): \Symfony\Component\HttpFoundation\RedirectResponse
+    {
+        return $this->redirectToRoute('app_home', ['_locale' => 'da']);
+    }
+
+    #[Route('/{_locale}', name: 'app_home', requirements: ['_locale' => 'da|en'])]
     public function index(): Response
     {
 
