@@ -20,7 +20,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav data-controller="menu" class="relative flex flex-col md:flex-row h-auto md:h-[300px] bg-white">
+    <nav id="main-nav" data-controller="nav--burgermenu nav--smooth-scroll" class="relative flex flex-col md:flex-row h-auto md:h-[300px] bg-white">
 
         <!-- Left: Logo (Now Taking md:w-1/3) -->
         <div class="relative w-full md:w-1/3 flex items-center justify-center overflow-hidden">
@@ -31,7 +31,7 @@
 
         <!-- Mobile Menu Button (Centered) -->
         <div class="w-full flex justify-center py-4 md:hidden">
-            <button data-action="click->menu#toggle" class="text-yellow-600 text-3xl transition-all">
+            <button data-action="click->nav--burgermenu#toggle" class="text-yellow-600 text-3xl transition-all">
                 <span id="menu-icon">
                     <svg class="w-8 h-8 text-yellow-600" id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
@@ -44,14 +44,14 @@
         </div>
 
         <!-- Right: Menu Section (Collapsible on Small Screens) -->
-        <div data-menu-target="menu"
+        <div data-nav--burgermenu-target="menu"
              class="w-full md:w-2/3 bg-yellow-500 clip-triangle flex flex-col justify-center items-center text-white text-2xl font-patrick-hand animate-slide-in hidden md:flex">
             <ul class="flex flex-col space-y-3 text-center">
                 <li><a href="#about" class="hover:text-yellow-300 font-semibold">Om mig</a></li>
                 <li><a href="#more-about" class="hover:text-yellow-300 font-semibold">Mere om mig</a></li>
                 <li><a href="#projects" class="hover:text-yellow-300 font-semibold">Mine Projekter</a></li>
                 <li><a href="#services" class="hover:text-yellow-300 font-semibold">Mine Services</a></li>
-                <li><a href="#contact" class="hover:text-yellow-300 font-semibold">Kontakt</a></li>
+                <li><a href="#footer" class="hover:text-yellow-300 font-semibold">Kontakt</a></li>
             </ul>
         </div>
 
