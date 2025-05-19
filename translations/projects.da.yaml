@@ -1,0 +1,13 @@
+heading: "Projekter"
+
+project_1:
+  title: "Hest Test Kalender Site"
+  type: "Eksamensopgave"
+  description: >
+    Et effektivt tidsregistreringssystem med klare roller: Admins styrer klienter, opgaver og todo’s – brugere registrerer tid og holder styr på deres egne opgaver.
+
+project_2:
+  title: "Arkitekt Site"
+  type: "Eksamensopgave"
+  description: >
+    Platform til arkitekter med stilrent design, glatte animationer, opgavestyring og nyhedstilmelding – alt samlet i én intuitiv løsning.

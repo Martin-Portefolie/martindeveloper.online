@@ -1,20 +1,22 @@
+{% trans_default_domain 'nav' %}
+
 <turbo-frame id="navigation">
 
     <!-- Top Section: Language Switcher & Portfolio Name -->
     <div class="flex flex-col md:flex-row w-full md:h-[100px] bg-white">
         <!-- Language Switcher (1/3 width) -->
         <div class="w-full md:w-1/3 flex justify-center md:justify-start items-center px-6 py-4">
-            <a href="/da" class="transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <a href="/da"  data-turbo="false" class="transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
                 <img src="{{ asset('images/lang/flag-dk.svg') }}" alt="Danish" class="w-8 h-8">
             </a>
-            <a href="/en" class="ml-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <a href="/en" data-turbo="false" class="ml-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
                 <img src="{{ asset('images/lang/flag-en.svg') }}" alt="English" class="w-8 h-8">
             </a>
         </div>
 
         <!-- Portfolio Name (2/3 width) -->
         <div class="w-full md:w-2/3 flex justify-center md:justify-end text-4xl font-patrick-hand text-yellow-600 py-4 pr-6 animate-fade-in">
-            Martins Portefølje
+            {{ 'portfolio_title'|trans }}
         </div>
     </div>
 
@@ -46,11 +48,11 @@
         <div data-nav--burgermenu-target="menu"
              class="w-full md:w-2/3 bg-yellow-500 clip-triangle flex flex-col justify-center items-center text-white text-2xl font-patrick-hand animate-slide-in hidden md:flex">
             <ul class="flex flex-col space-y-3 text-center">
-                <li><a href="#about" class="hover:text-yellow-300 font-semibold">{{ 'nav.about'|trans }}</a></li>
-                <li><a href="#more-about" class="hover:text-yellow-300 font-semibold">{{ 'nav.more_about'|trans }}</a></li>
-                <li><a href="#projects" class="hover:text-yellow-300 font-semibold">{{ 'nav.projects'|trans }}</a></li>
-                <li><a href="#services" class="hover:text-yellow-300 font-semibold">{{ 'nav.services'|trans }}</a></li>
-                <li><a href="#footer" class="hover:text-yellow-300 font-semibold">{{ 'nav.contact'|trans }}</a></li>
+                <li><a href="#about" class="hover:text-yellow-300 font-semibold">{{ 'about'|trans }}</a></li>
+                <li><a href="#more-about" class="hover:text-yellow-300 font-semibold">{{ 'more_about'|trans }}</a></li>
+                <li><a href="#projects" class="hover:text-yellow-300 font-semibold">{{ 'projects'|trans }}</a></li>
+                <li><a href="#services" class="hover:text-yellow-300 font-semibold">{{ 'services'|trans }}</a></li>
+                <li><a href="#footer" class="hover:text-yellow-300 font-semibold">{{ 'contact'|trans }}</a></li>
             </ul>
         </div>
 

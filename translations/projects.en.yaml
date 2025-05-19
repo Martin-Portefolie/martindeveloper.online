@@ -1,0 +1,13 @@
+heading: "My Projects"
+
+project_1:
+  title: "Hest Test Calendar Site"
+  type: "Exam Project"
+  description: >
+    An efficient time tracking system with clear roles: Admins manage clients, tasks, and todos – users register time and keep track of their own tasks.
+
+project_2:
+  title: "Architect Site"
+  type: "Exam Project"
+  description: >
+    A platform for architects featuring clean design, smooth animations, task management, and newsletter signup – all in one intuitive solution.

@@ -1,3 +1,5 @@
+{% trans_default_domain 'footer' %}
+
 <turbo-frame id="footer">
     <footer class="font-patrick-hand">
         <!-- Top Section -->
@@ -6,13 +8,13 @@
 
                 <!-- Contact (Left) -->
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-semibold">Kontakt</h2>
-                    <p class="text-lg">Martin Kristiansen</p>
-                    <p class="text-sm">Horsens, Danmark</p>
+                    <h2 class="text-2xl font-semibold">{{ 'contact_heading'|trans }}</h2>
+                    <p class="text-lg">{{ 'name'|trans }}</p>
+                    <p class="text-sm">{{ 'location'|trans }}</p>
                     <p class="text-sm">
-                        Email: <a href="#" class="underline hover:text-gray-300 transition">n1tramkr1st1ansen@gmail.com</a>
+                        {{ 'email_label'|trans }}: <a href="#" class="underline hover:text-gray-300 transition">n1tramkr1st1ansen@gmail.com</a>
                     </p>
-                    <p class="text-sm">Telefon: <span class="font-semibold">+45 36 20 25 27</span></p>
+                    <p class="text-sm">{{ 'phone_label'|trans }}: <span class="font-semibold">+45 36 20 25 27</span></p>
 
                     <!-- Social Media -->
                     <div class="flex space-x-4 pt-2">
@@ -25,9 +27,9 @@
                     </div>
                 </div>
 
-                <!-- Technologies used. (Left-Aligned) -->
+                <!-- Technologies used. -->
                 <div class="flex flex-col items-start space-y-6">
-                    <h2 class="text-2xl font-semibold">Denne side er bygget med:</h2>
+                    <h2 class="text-2xl font-semibold">{{ 'built_with'|trans }}</h2>
                     <div class="flex flex-wrap justify-start gap-6">
                         {% for tech in ['symfony', 'twig', 'stimulus', 'turbo', 'tailwind'] %}
                             <div class="flex flex-col items-center">
@@ -44,8 +46,8 @@
         <!-- Bottom Section -->
         <div class="bg-yellow-600 text-white py-4 px-6">
             <div class="max-w-6xl mx-auto text-center text-sm">
-                <p>© {{ "now"|date("Y") }} Martin Kristiansens Portefølje</p>
-                <p>Alle rettigheder forbeholdes.</p>
+                <p>{{ 'copyright'|trans({ '%year%': "now"|date("Y") }) }}</p>
+                <p>{{ 'rights'|trans }}</p>
             </div>
         </div>
     </footer>

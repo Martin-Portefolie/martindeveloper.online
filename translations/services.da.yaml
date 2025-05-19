@@ -1,0 +1,16 @@
+heading: "Services"
+subheading: "Her er nogle af de services, hvor jeg kan hjælpe dig videre med dit projekt."
+
+row_one:
+  - title: "Arkitektur & Rådgivning"
+    desc: "Overblik, struktur og tech stack-valg."
+  - title: "Backend-udvikling"
+    desc: "Skalerbare systemer og integrationer."
+
+row_two:
+  - title: "Systemintegration"
+    desc: "Sammenknytning af systemer & API’er."
+  - title: "Frontend"
+    desc: "Interaktivt UI med fokus på brugeroplevelse."
+  - title: "Design & UX"
+    desc: "Visuelle interfaces med mening."

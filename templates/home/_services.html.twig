@@ -1,22 +1,19 @@
-
+{% trans_default_domain 'services' %}
 <section id="services" class="py-24 mt-40 mb-40 bg-white text-yellow-900 eb-garamond-regular px-6 text-base leading-relaxed">
     <div class="max-w-6xl mx-auto space-y-12">
 
         <!-- Section Heading -->
         <div class="space-y-4">
             <div class="w-20 border-t-8 border-yellow-500"></div>
-            <h2 class="text-4xl font-bold text-yellow-600">Services</h2>
-            <h2 class="text-2xl font-semibold text-yellow-700">
-                Her er nogle af de services, hvor jeg kan hjælpe dig videre med dit projekt.
-            </h2>
+            <h2 class="text-4xl font-bold text-yellow-600">{{ 'heading'|trans }}</h2>
+            <h2 class="text-2xl font-semibold text-yellow-700">{{ 'subheading'|trans }}</h2>
         </div>
 
-
-        <!-- Row 1: 2 Columns with Larger Icons -->
+        <!-- Row 1 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% set rowOne = [
-                { icon: 'mdi:architecture', title: 'Arkitektur & Rådgivning', desc: 'Overblik, struktur og tech stack-valg.' },
-                { icon: 'mdi:database-cog', title: 'Backend-udvikling', desc: 'Skalerbare systemer og integrationer.' }
+                { icon: 'mdi:architecture', titleKey: 'row_one.0.title', descKey: 'row_one.0.desc' },
+                { icon: 'mdi:database-cog', titleKey: 'row_one.1.title', descKey: 'row_one.1.desc' }
             ] %}
 
             {% for service in rowOne %}
@@ -26,18 +23,18 @@
                             {{ ux_icon(service.icon, { class: 'w-6 h-6' }) }}
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-yellow-700 mb-2 text-center">{{ service.title }}</h3>
-                    <p class="text-yellow-800 text-sm text-center">{{ service.desc }}</p>
+                    <h3 class="text-xl font-bold text-yellow-700 mb-2 text-center">{{ service.titleKey|trans }}</h3>
+                    <p class="text-yellow-800 text-sm text-center">{{ service.descKey|trans }}</p>
                 </div>
             {% endfor %}
         </div>
 
-        <!-- Row 2: 3 Columns with Smaller Icons -->
+        <!-- Row 2 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {% set rowTwo = [
-                { icon: 'mdi:cloud-sync', title: 'Systemintegration', desc: 'Sammenknytning af systemer & API’er.' },
-                { icon: 'mdi:monitor-cellphone', title: 'Frontend', desc: 'Interaktivt UI med fokus på brugeroplevelse.' },
-                { icon: 'mdi:palette-outline', title: 'Design & UX', desc: 'Visuelle interfaces med mening.' }
+                { icon: 'mdi:cloud-sync', titleKey: 'row_two.0.title', descKey: 'row_two.0.desc' },
+                { icon: 'mdi:monitor-cellphone', titleKey: 'row_two.1.title', descKey: 'row_two.1.desc' },
+                { icon: 'mdi:palette-outline', titleKey: 'row_two.2.title', descKey: 'row_two.2.desc' }
             ] %}
 
             {% for service in rowTwo %}
@@ -47,8 +44,8 @@
                             {{ ux_icon(service.icon, { class: 'w-5 h-5' }) }}
                         </div>
                     </div>
-                    <h3 class="text-md font-bold text-yellow-700 mb-1 text-center">{{ service.title }}</h3>
-                    <p class="text-yellow-800 text-sm text-center">{{ service.desc }}</p>
+                    <h3 class="text-md font-bold text-yellow-700 mb-1 text-center">{{ service.titleKey|trans }}</h3>
+                    <p class="text-yellow-800 text-sm text-center">{{ service.descKey|trans }}</p>
                 </div>
             {% endfor %}
         </div>

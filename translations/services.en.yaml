@@ -1,0 +1,16 @@
+heading: "Services"
+subheading: "Here are some of the services where i can help move your project forward."
+
+row_one:
+  - title: "Architecture & Consulting"
+    desc: "Overview, structure, and tech stack guidance."
+  - title: "Backend Development"
+    desc: "Scalable systems and integrations."
+
+row_two:
+  - title: "System Integration"
+    desc: "Connecting systems & APIs."
+  - title: "Frontend"
+    desc: "Interactive UI with a focus on user experience."
+  - title: "Design & UX"
+    desc: "Visual interfaces that make sense."
