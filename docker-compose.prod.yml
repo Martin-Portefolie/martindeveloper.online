@@ -18,7 +18,7 @@ services:
       - traefik.http.middlewares.martin-https.redirectscheme.scheme=https
       - traefik.http.routers.martin-web.rule=Host(`${SERVER_NAME:-martindeveloper.dk}`)
       - traefik.http.routers.martin-web.entrypoints=web
-      - traefik.http.routers.martin-web.middlewares=martin-https
+      - traefik.http.routers.martin-web.middlewares=martin-https@docker
     restart: unless-stopped
 networks:
   web:
