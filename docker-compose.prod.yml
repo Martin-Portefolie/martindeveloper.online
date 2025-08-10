@@ -6,8 +6,8 @@ services:
     image: martin_portefolie:prod
     environment:
       APP_ENV: prod
-      SERVER_NAME: ${SERVER_NAME:-martindeveloper.dk}
-      CADDY_GLOBAL_OPTIONS: ""
+      SERVER_NAME: ":80"
+      CADDY_GLOBAL_OPTIONS: "auto_https off"
     networks: [web]
     labels:
       - traefik.enable=true

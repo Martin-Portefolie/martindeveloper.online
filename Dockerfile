@@ -17,7 +17,7 @@ RUN if [ "$APP_ENV" = "prod" ]; then \
 
 # now copy app and run scripts
 COPY . /app
-COPY Caddyfile /app/Caddyfile
+COPY Caddyfile /etc/frankenphp/Caddyfile
 RUN if [ "$APP_ENV" = "prod" ]; then \
       composer install --no-dev --no-interaction --no-progress --prefer-dist && \
       composer dump-env prod && \
