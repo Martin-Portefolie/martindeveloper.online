@@ -16,5 +16,7 @@ http://{$SERVER_NAME} {
     @frontController path index.php
     php @frontController
 
-    file_server { hide *.php }
+    file_server {
+        hide *.php
+    }
 }
