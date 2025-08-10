@@ -7,7 +7,7 @@ services:
     environment:
       APP_ENV: prod
       SERVER_NAME: ${SERVER_NAME:-martindeveloper.dk}
-      CADDY_GLOBAL_OPTIONS: ""   # keep empty in prod
+      CADDY_GLOBAL_OPTIONS: ""
     networks: [web]
     labels:
       - traefik.enable=true
@@ -15,7 +15,6 @@ services:
       - traefik.http.routers.martin.entrypoints=websecure
       - traefik.http.routers.martin.tls.certresolver=le
       - traefik.http.services.martin.loadbalancer.server.port=80
-      # HTTP -> HTTPS redirect (no file provider needed)
       - traefik.http.middlewares.martin-https.redirectscheme.scheme=https
       - traefik.http.routers.martin-web.rule=Host(`${SERVER_NAME:-martindeveloper.dk}`)
       - traefik.http.routers.martin-web.entrypoints=web
