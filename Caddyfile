@@ -1,10 +1,8 @@
 {
-    frankenphp
-    # Optional: only enable debug in dev
-    {$CADDY_GLOBAL_OPTIONS}
+  {$CADDY_GLOBAL_OPTIONS}
 }
 
-{$SERVER_NAME} {
+http://{$SERVER_NAME} {
     root * /app/public
     encode zstd br gzip
     php_server
@@ -18,7 +16,5 @@
     @frontController path index.php
     php @frontController
 
-    file_server {
-        hide *.php
-    }
+    file_server { hide *.php }
 }

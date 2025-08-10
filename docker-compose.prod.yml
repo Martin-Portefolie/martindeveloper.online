@@ -1,0 +1,22 @@
+services:
+  martin_portefolie:
+    build:
+      context: .
+      args:
+        APP_ENV: prod
+    image: martin_portefolie:prod
+    environment:
+      APP_ENV: prod
+      SERVER_NAME: ${SERVER_NAME:-martindeveloper.dk}
+      CADDY_GLOBAL_OPTIONS: ""
+    networks: [web]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.martin.rule=Host(`${SERVER_NAME:-martindeveloper.dk}`)
+      - traefik.http.routers.martin.entrypoints=websecure
+      - traefik.http.routers.martin.tls.certresolver=le
+      - traefik.http.services.martin.loadbalancer.server.port=80
+    restart: unless-stopped
+networks:
+  web:
+    external: true

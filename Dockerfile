@@ -1,31 +1,35 @@
-# Dockerfile
-FROM dunglas/frankenphp
-
-RUN apt-get update && apt-get install -y \
-    libicu-dev \
-    unzip \
-    git \
-    curl \
-    zlib1g-dev \
-    libzip-dev \
-    libpq-dev \
-    mariadb-client \
-    && docker-php-ext-install intl zip pdo_mysql
-
-# Install Composer globally
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# syntax=docker/dockerfile:1
+FROM dunglas/frankenphp:latest
 
 WORKDIR /app
-COPY . /app
 
-# Default is production, override with --build-arg if needed
-ARG APP_ENV=prod
+# PHP extensions (no DB)
+RUN install-php-extensions intl zip opcache
+
+# Composer from official image
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Dev by default; override with --build-arg APP_ENV=prod in prod
+ARG APP_ENV=dev
 ENV APP_ENV=${APP_ENV}
 
-# Dump optimized .env.local.php in prod
+# Use cache for deps
+COPY composer.json composer.lock symfony.lock* ./
 RUN if [ "$APP_ENV" = "prod" ]; then \
-        composer install --no-dev --optimize-autoloader && \
-        composer dump-env prod; \
+      composer install --no-dev --optimize-autoloader --no-interaction --no-progress; \
     else \
-        composer install; \
+      composer install --no-interaction --no-progress || true; \
     fi
+
+# App (includes Caddyfile with {$SERVER_NAME})
+COPY . /app
+
+# Prod-only optimizations
+RUN if [ "$APP_ENV" = "prod" ]; then \
+      composer dump-env prod && \
+      php bin/console asset-map:compile || true && \
+      php bin/console tailwind:build || true; \
+    fi \
+ && chown -R www-data:www-data var
+
+EXPOSE 80
