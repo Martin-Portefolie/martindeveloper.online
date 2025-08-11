@@ -11,12 +11,15 @@ services:
     networks: [web]
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.martin.rule=Host(`martindeveloper.dk`,`www.martindeveloper.dk`)"
+      - "traefik.docker.network=web"
+      - "traefik.http.services.martin.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.martin.rule=Host(`martindeveloper.dk`) || Host(`www.martindeveloper.dk`)"
       - "traefik.http.routers.martin.entrypoints=websecure"
       - "traefik.http.routers.martin.tls.certresolver=le"
-      - "traefik.http.services.martin.loadbalancer.server.port=80"
+
       - "traefik.http.middlewares.martin-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.martin-web.rule=Host(`martindeveloper.dk`,`www.martindeveloper.dk`)"
+      - "traefik.http.routers.martin-web.rule=Host(`martindeveloper.dk`) || Host(`www.martindeveloper.dk`)"
       - "traefik.http.routers.martin-web.entrypoints=web"
       - "traefik.http.routers.martin-web.middlewares=martin-https@docker"
       - "traefik.http.routers.martin-web.service=martin"
