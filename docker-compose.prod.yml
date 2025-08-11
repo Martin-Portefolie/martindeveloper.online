@@ -19,6 +19,7 @@ services:
       - "traefik.http.routers.martin-web.rule=Host(`martindeveloper.dk`,`www.martindeveloper.dk`)"
       - "traefik.http.routers.martin-web.entrypoints=web"
       - "traefik.http.routers.martin-web.middlewares=martin-https@docker"
+      - "traefik.http.routers.martin-web.service=martin"
     restart: unless-stopped
 
 networks:
