@@ -8,6 +8,10 @@ services:
       APP_ENV: prod
       SERVER_NAME: ":80"
       CADDY_GLOBAL_OPTIONS: "auto_https off"
+      DATABASE_URL: "sqlite:///%kernel.project_dir%/var/data.db"
+      MESSENGER_TRANSPORT_DSN: "sync://"
+      MAILER_DSN: "null://null"
+      APP_DEBUG: "0"
     networks: [web]
     labels:
       - "traefik.enable=true"
