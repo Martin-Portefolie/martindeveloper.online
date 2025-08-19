@@ -46,6 +46,6 @@ docker exec -it $APP sh -lc '
 '
 
 # Verify (should be 200 or redirect to /da):
-curl -I https://your-domain.tld
-curl -I https://www.your-domain.tld
+curl -I https://martindeveloper.dk/da
+curl -I https://www.martindeveloper.dk/da
 ```
