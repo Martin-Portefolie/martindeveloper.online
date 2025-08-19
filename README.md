@@ -1,57 +1,51 @@
 # Martins Portefolie
-A Symfony + FrankenPHP-based portfolio site.
 
-## Local Development Setup
+A small **portfolio site** built with **Symfony 7 + FrankenPHP (Caddy)**.  
+Runs in Docker for easy local development and production deployment (behind Traefik).
 
-Go to the .env file and
-uncomment 
-```sh
-# For dev
-APP_ENV=dev
-SERVER_NAME=localhost
-CADDY_GLOBAL_OPTIONS=debug
-```
-comment this
-```sh
-# For prod (overridden in your prod deployment config)
-#APP_ENV=prod
-#SERVER_NAME=martindeveloper.online
-```
+---
 
-```sh
-# Build image for development
-docker build -t martin_portefolie --build-arg APP_ENV=dev .
+## Development (local)
 
-# Start container
+**Requirements:** Docker + Docker Compose.
+
+```bash
+# Start dev stack (exposes http://localhost:8080)
 docker compose up -d
 
-# Install dependencies
-docker compose exec martin_portefolie composer install
+# Install PHP deps
+docker compose exec app composer install
 
-# Build Tailwind CSS
-docker compose exec martin_portefolie bin/console tailwind:build
+# Frontend assets (Stimulus/Turbo via importmap + Tailwind)
+docker compose exec app php bin/console importmap:install --no-interaction
+docker compose exec app bin/console tailwind:build
+
+# Open:
+# http://localhost:8080
 ```
 
+---
 
-##  Server Setup
+## Production (server)
 
-```sh
-# Build image for production
-docker build -t martin_portefolie --build-arg APP_ENV=prod .
+**Assumes:**
+- DNS for your domain points to the server
+- Traefik v3 is already running on the host and your app service is attached to the external `web` network
 
-# Start container
-docker compose up -d
+```bash
+# Build & run prod
+docker compose -f docker-compose.prod.yml up -d --build
 
-# Install dependencies
-docker compose exec martin_portefolie composer install --no-dev --optimize-autoloader
+# First-run: install/import assets & warm cache
+APP=$(docker compose -f docker-compose.prod.yml ps -q martin_portefolie)
+docker exec -it $APP sh -lc '
+  php bin/console importmap:install --no-interaction &&
+  php bin/console asset-map:compile &&
+  php bin/console tailwind:build &&
+  php bin/console cache:clear --env=prod
+'
 
-# Dump compiled .env (only needed once after build)
-docker compose exec martin_portefolie composer dump-env prod
-
-# Compile frontend assets (Tailwind CSS, etc.)
-docker compose exec martin_portefolie bin/console tailwind:build
-
-# Compile asset mapper (images, fonts, etc.)
-docker compose exec martin_portefolie bin/console asset-map:compile
-
+# Verify (should be 200 or redirect to /da):
+curl -I https://your-domain.tld
+curl -I https://www.your-domain.tld
 ```
