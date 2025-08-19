@@ -11,7 +11,7 @@ services:
       DATABASE_URL: "sqlite:///%kernel.project_dir%/var/data.db"
       MESSENGER_TRANSPORT_DSN: "sync://"
       MAILER_DSN: "null://null"
-      APP_DEBUG: "1"
+      APP_DEBUG: "0"
     networks: [web]
     labels:
       - "traefik.enable=true"
